@@ -1,0 +1,69 @@
+﻿@model MZXYOnlineJudge.Models.Users
+
+@{
+    ViewBag.Title = "注册你的OJ账号";
+}
+
+<script type="text/javascript">
+    // 确认签名方法
+    function cbkck() {
+        if ($("#submt").attr("disabled") == "disabled") {
+            $("#submt").removeAttr("disabled");
+        } else {
+            $("#submt").attr("disabled", "disabled");
+        }
+    }
+    // 正则方法
+    function submit() {
+        if ($("#pwd").val() != $("#repwd").val()) {
+            alert("重复密码错误！");
+            return;
+        }
+        let uid = $("#uid").val();
+        let eml = $("#eml").val();
+        let pwd = $("#pwd").val();
+        let nik = $("#nik").val();
+        let shl = $("#shl").val();
+        params = { "user_id": uid, "email": eml, "password": pwd, "nick": nik, "school": shl };
+        $.post('@Url.Action("Regist","Home")', params)
+                .done(function (data) {
+                    if (data) {
+                        alert("注册成功！");
+                    } else {
+                        alert("账号名称重复！");
+                    }
+                })
+                .fail(function (data) {
+                    alert('ajax传输失败');
+                })
+    }
+</script>
+
+<div style="margin-left:240px;">
+    <fieldset>
+        <legend>注册你的信息</legend>
+        <label>账号</label>
+        <input type="text" id="uid" name="user_id" />
+        <span class="help-block">登录时的唯一凭证.</span>
+        <label>邮箱</label>
+        <input type="text" id="eml" name="email" />
+        <span class="help-block">保护账号安全.</span>
+        <label>密码</label>
+        <input type="password" id="pwd" name="password" />
+        <span class="help-block">请不要填写常用密码.</span>
+        <label>确认密码</label>
+        <input type="password" id="repwd" />
+        <span class="help-block">密码信息为明文存储.</span>
+        <label>昵称</label>
+        <input type="text" id="nik" name="nick" />
+        <span class="help-block">其他用户看到的名字.</span>
+        <label>学校</label>
+        <input type="text" id="shl" name="school" />
+        <span class="help-block">填写您的真实学校.</span><br />
+        !请不要提交恶意代码，
+        判定为恶意代码将采取账号封停与ip永久停封
+        <label class="checkbox"><input type="checkbox" onclick="cbkck()" /> 勾选同意</label>
+        <button class="btn" id="submt" disabled="disabled" onclick="submit()">提交</button>
+    </fieldset>
+</div>
+

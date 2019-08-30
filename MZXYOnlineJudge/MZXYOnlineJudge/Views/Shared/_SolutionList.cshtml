@@ -1,0 +1,41 @@
+﻿@using Webdiyer.WebControls.Mvc;
+@model PagedList<MZXYOnlineJudge.Models.Solution>
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.solution_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.user_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.problem_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.result)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.solution_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.problem_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.result)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+    </tr>
+    }
+</table>

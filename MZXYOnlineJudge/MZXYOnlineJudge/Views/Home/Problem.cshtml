@@ -1,0 +1,28 @@
+﻿@model PagedList<MZXYOnlineJudge.Models.Problem>
+@using Webdiyer.WebControls.Mvc;
+@{
+    ViewBag.Title = "Problem";
+}
+
+
+
+
+@Html.Partial("_ProblemList", Model)
+@{Html.RegisterMvcPagerScriptResource();}
+<div class="pagination pagination-centered">
+    @Html.Pager(Model,new PagerOptions {
+        ControllerName="Home",
+        ActionName="Problem",
+        PageIndexParameterName= "pageIndex",
+        ContainerTagName="ul",
+        FirstPageText="首页",
+        PrevPageText="上一页",
+        NextPageText="下一页",
+        LastPageText="末页",
+        CssClass="pagination",
+        PagerItemTemplate="<li>{0}</li>",
+        CurrentPagerItemTemplate="<li class='active'><a href='#'>{0}</a></li>",
+        DisabledPagerItemTemplate="<li class='disabled'><a>{0}</a></li>",
+        Id="bootstrappager"
+    })
+</div>

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MZXYOJModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Problem">
+    <Key>
+      <PropertyRef Name="problem_id" />
+    </Key>
+    <Property Name="problem_id" Type="int" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="200" />
+    <Property Name="description" Type="text" />
+    <Property Name="input" Type="text" />
+    <Property Name="output" Type="text" />
+    <Property Name="sample_input" Type="text" />
+    <Property Name="sample_output" Type="text" />
+    <Property Name="hint" Type="text" />
+    <Property Name="spj" Type="char" MaxLength="2" />
+    <Property Name="source" Type="varchar" MaxLength="100" />
+    <Property Name="in_date" Type="datetime" />
+    <Property Name="time_limit" Type="int" />
+    <Property Name="memory_limit" Type="int" />
+    <Property Name="enable" Type="char" MaxLength="10" />
+    <Property Name="accepted" Type="int" />
+    <Property Name="submit" Type="int" />
+    <Property Name="solved" Type="text" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6013: 表/视图“MZXYOJ.dbo.RuntimeInfo”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+        <EntityType Name="RuntimeInfo">
+          <Property Name="solution_id" Type="int" />
+          <Property Name="error" Type="text" />
+        </EntityType>-->
+  <EntityType Name="Solution">
+    <Key>
+      <PropertyRef Name="solution_id" />
+    </Key>
+    <Property Name="solution_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="problem_id" Type="int" Nullable="false" />
+    <Property Name="user_id" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="time" Type="int" />
+    <Property Name="memory" Type="int" />
+    <Property Name="in_date" Type="datetime" />
+    <Property Name="result" Type="int" />
+    <Property Name="language" Type="char" MaxLength="10" />
+    <Property Name="ip" Type="char" MaxLength="20" />
+    <Property Name="contest_id" Type="int" />
+    <Property Name="valid" Type="int" />
+    <Property Name="num" Type="int" />
+    <Property Name="code_length" Type="int" />
+    <Property Name="status" Type="nvarchar" MaxLength="20" />
+    <Property Name="uploadtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="submit" Type="int" />
+    <Property Name="solved" Type="int" />
+    <Property Name="defunct" Type="char" MaxLength="10" />
+    <Property Name="ip" Type="varchar" MaxLength="50" />
+    <Property Name="reg_time" Type="datetime" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+    <Property Name="nick" Type="varchar" MaxLength="50" />
+    <Property Name="school" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="MZXYOJModelStoreContainer">
+    <EntitySet Name="Problem" EntityType="Self.Problem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Solution" EntityType="Self.Solution" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

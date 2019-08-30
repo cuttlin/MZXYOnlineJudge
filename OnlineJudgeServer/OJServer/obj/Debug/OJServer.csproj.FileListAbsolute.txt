@@ -1,0 +1,10 @@
+D:\毕业设计\OnlineJudgeServer\OJServer\bin\Debug\OJServer.exe.config
+D:\毕业设计\OnlineJudgeServer\OJServer\bin\Debug\OJServer.exe
+D:\毕业设计\OnlineJudgeServer\OJServer\bin\Debug\OJServer.pdb
+D:\毕业设计\OnlineJudgeServer\OJServer\obj\Debug\OJServer.Properties.Resources.resources
+D:\毕业设计\OnlineJudgeServer\OJServer\obj\Debug\OJServer.csproj.GenerateResource.cache
+D:\毕业设计\OnlineJudgeServer\OJServer\obj\Debug\OJServer.csproj.CoreCompileInputs.cache
+D:\毕业设计\OnlineJudgeServer\OJServer\obj\Debug\OJServer.exe
+D:\毕业设计\OnlineJudgeServer\OJServer\obj\Debug\OJServer.pdb
+D:\毕业设计\OnlineJudgeServer\OJServer\obj\Debug\OJServer.Server.resources
+D:\毕业设计\OnlineJudgeServer\OJServer\obj\Debug\OJServer.csprojAssemblyReference.cache

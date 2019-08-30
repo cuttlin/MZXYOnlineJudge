@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MZXYOJModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="Problem">
+      <EntityTypeMapping TypeName="MZXYOJModel.Problem">
+        <MappingFragment StoreEntitySet="Problem">
+          <ScalarProperty Name="problem_id" ColumnName="problem_id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="input" ColumnName="input" />
+          <ScalarProperty Name="output" ColumnName="output" />
+          <ScalarProperty Name="sample_input" ColumnName="sample_input" />
+          <ScalarProperty Name="sample_output" ColumnName="sample_output" />
+          <ScalarProperty Name="spj" ColumnName="spj" />
+          <ScalarProperty Name="source" ColumnName="source" />
+          <ScalarProperty Name="in_date" ColumnName="in_date" />
+          <ScalarProperty Name="time_limit" ColumnName="time_limit" />
+          <ScalarProperty Name="memory_limit" ColumnName="memory_limit" />
+          <ScalarProperty Name="enable" ColumnName="enable" />
+          <ScalarProperty Name="accepted" ColumnName="accepted" />
+          <ScalarProperty Name="submit" ColumnName="submit" />
+          <ScalarProperty Name="solved" ColumnName="solved" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="MZXYOJModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="submit" ColumnName="submit" />
+          <ScalarProperty Name="solved" ColumnName="solved" />
+          <ScalarProperty Name="defunct" ColumnName="defunct" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="reg_time" ColumnName="reg_time" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="nick" ColumnName="nick" />
+          <ScalarProperty Name="school" ColumnName="school" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,67 @@
+﻿@model MZXYOnlineJudge.Models.Users
+
+@{
+    ViewBag.Title = "UserEdit";
+}
+
+<script type="text/javascript">
+    $(function myfunction() {
+        if (flag != null) {
+            alert("更改成功！");
+        }
+    })
+</script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>修改您的帐户信息</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.user_id)
+
+        <span>登录ID:@Model.user_id</span>
+
+        <div class="form-group">
+            <label>@Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.nick, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nick, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nick, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.school, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.school, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.school, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="提交" onclick="submit()" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+

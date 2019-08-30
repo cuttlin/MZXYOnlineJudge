@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="navbar navbar-inverse">
+                    <div class="navbar-inner">
+                        <div class="container-fluid">
+                            <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a> <a class="brand" href='@Url.Content("~/Home/Index")'>MZXYOJ</a>
+                            <div class="nav-collapse collapse navbar-responsive-collapse">
+                                <ul class="nav">
+                                    <li>
+                                        <a href='@Url.Content("~/Home/Problem")'>题库</a>
+                                    </li>
+                                    <li>
+                                        <a href='@Url.Content("~/Home/Rank")'>排名</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">比赛</a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">更多<strong class="caret"></strong></a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a href="#">论坛</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">上传题目</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">bug题目反馈</a>
+                                            </li>
+                                            <li class="divider">
+                                            </li>
+                                            <li class="nav-header">
+                                                Server status
+                                            </li>
+                                            <li>
+                                                <a href='@Url.Content("~/Judge/CJudgeRecard")'>C判题机记录</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">C++判题机记录</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Java判题机记录</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <ul class="nav pull-right">
+                                    @{ if (Session["user_id"] == null)
+                                        {
+                                            <li id="aflogin1">
+                                                <a href='@Url.Content("~/Home/Regist")'>注册</a>
+                                            </li>
+
+
+                                            <li id="aflogin2" class="divider-vertical">
+                                                @*<a href='@Url.Action("Login","Home")'>登录</a>*@
+                                                <a id="modal-852129" href="#modal-container-852129" name="login_a" data-toggle="modal">登录</a>
+
+                                                <div class="modal hide fade" id="modal-container-852129" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel">
+                                                    <div class="modal-header">
+                                                        <button class="close" aria-hidden="true" type="button" data-dismiss="modal">×</button>
+                                                        <h3 id="myModalLabel">
+                                                            请登录
+                                                        </h3>
+                                                    </div>
+                                                    <div class="form-horizontal">
+                                                        <div class="modal-body">
+                                                            @* 登录内样式 *@
+                                                            <div class="row-fluid">
+                                                                <div class="span12">
+
+                                                                    <div class="control-group">
+                                                                        <label class="control-label" for="inputEmail">用户</label>
+                                                                        <div class="controls">
+                                                                            <input id="user_id" name="user_id" type="text" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="control-group">
+                                                                        <label class="control-label" for="inputPassword">密码</label>
+                                                                        <div class="controls">
+                                                                            <input id="password" name="password" type="password" /><font id="lblerr" hidden="hidden" style="background-color:orangered;">密码错误！</font>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="control-group">
+                                                                        <div class="controls">
+                                                                            <label class="checkbox"><input type="checkbox" /> 记住我！</label>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button class="btn" aria-hidden="true" id="qx" data-dismiss="modal">取消</button> <button class="btn btn-primary" onclick="tologin()">登录</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li class="dropdown">
+                                                <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                                                        @Session["nick"] <strong class="caret"></strong>
+                                                </a>
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <a href='@Url.Action("UserInfo","Judge")'>个人信息</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href='@Url.Action("UserEdit","Home")'>信息修改</a>
+                                                    </li>
+                                                    <li>
+                                                        <a onclick="cancel()">注销</a>
+                                                    </li>
+                                                    <li class="divider">
+                                                    </li>
+                                                    <li>
+                                                        <a onclick="exit()" href="#">退出</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        } }
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        @RenderBody()
+        <div class="body-content">
+
+            <hr />
+            <footer>
+                <p style="margin-left:300px;">&copy; @DateTime.Now.Year - 封帅虎</p>
+            </footer>
+        </div>
+    </div>
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        function tologin() {
+            var uid = $("#user_id").val();
+            var pwd = $("#password").val();
+
+            result = { "user_id": uid, "password": pwd };
+            $.post('@Url.Action("Login","Home")',result)
+                .done(function (data) {
+                    if (data) {
+                        window.location.reload();
+                    } else {
+                        $("#lblerr").removeAttr("hidden");
+                    }
+                })
+                .fail(function (data) {
+                    alert('ajax传输失败');
+                })
+        }
+        function cancel() {
+            $.post('@Url.Action("Cancel","Home")', null)
+                .done(function (data) { });
+            history.go(0);
+        }
+
+        function exit() {
+            window.close();
+        }
+    </script>
+</body>
+</html>

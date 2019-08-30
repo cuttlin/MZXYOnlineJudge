@@ -1,0 +1,65 @@
+﻿@model MZXYOnlineJudge.Models.Problem
+
+@{
+    ViewBag.Title = "ProblemInfo";
+}
+<h3 class="text-center">
+    @Model.title
+</h3>
+<h3>
+    题目描述：
+</h3>
+<div class="well">
+    @(new HtmlString(@Model.description))
+</div>
+<h3>
+    输入：
+</h3>
+<div class="well">
+    @(new HtmlString(@Model.input))
+</div>
+<h3>
+    输出：
+</h3>
+<div class="well">
+    @(new HtmlString(@Model.output))
+</div>
+<h3>
+    样例输入：
+</h3>
+<div class="well">
+    @(new HtmlString(@Model.sample_input))
+</div>
+<h3>
+    样例输出：
+</h3>
+<div class="well">
+    @(new HtmlString(@Model.sample_output))
+</div>
+<div class="text-center">
+    <label for="name">输入您的代码</label>
+    <textarea id="code" rows="20" style="width:950px;"></textarea><br />
+    <input class="btn btn-inverse" onclick="upcode()" type="button" value="提交" />
+</div>
+
+<script type="text/javascript">
+    function upcode() {
+        var code = $("#code").val();
+        
+        var param = { "text": code };
+
+        $.post('@Url.Action("UpLoadCode", "Judge")', param)
+            .done(function (data) {
+               
+                if (!data) {
+                    alert("请先登录！");
+                } else if (data == "1"){
+                    alert("代码运行成功！");
+                } else if (data == "-1"){ 
+                    alert("代码运行失败！");
+                } else if (data == "0") {
+                    alert("代码编译失败！");
+                }
+            });
+    }
+</script>

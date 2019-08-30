@@ -1,0 +1,37 @@
+﻿@using Webdiyer.WebControls.Mvc;
+@model PagedList<MZXYOnlineJudge.Models.Users>
+<table class="table table-hover">
+    <tr>
+        <th>
+            排名
+        </th>
+        <th>
+            昵称
+        </th>
+        <th>
+            解决数
+        </th>
+        <th>
+            提交数
+        </th>
+    </tr>
+    @{ var count = 1;}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @count@{ count++;}
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nick)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.solved)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.submit)
+            </td>
+        </tr>
+    }
+</table>
+
